@@ -2,8 +2,8 @@
 
 set -e
 
-# only works for linux
-xray_folder="/usr/local/share/xray"
+# set xray's geofiles directory
+xray_folder="$1"
 
 YELLOW='\033[33m'
 GREEN='\033[0;32m'
@@ -17,22 +17,22 @@ GEOSITE_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/dow
 GEOIP="geoip.dat"
 GEOSITE="geosite.dat"
 
-
-# arguments must be <empty> or "cn"
-if [[ $# -gt 1 ]]; then
-    echo -e "${RedBG}>>> only accept 1 argument!${NC}"
+# arguments 2 must be <empty> or "cn"
+if [[ $# -gt 2 ]]; then
+    echo -e "${RedBG}>>> only accept 2 argument!${NC}"
     exit 1
 fi
 
 # validation check
-if [[ $1 == "cn" ]]; then
+if [[ $2 == "cn" ]]; then
     # set different URL for downloading assets
     GEOIP_URL="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
     GEOSITE_URL="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
-elif [[ $# -eq 1 && $1 != "cn" ]]; then
-    echo -e "${RedBG}>>> arguments only accept \"cn\"!${NC}"
+elif [[ $# -eq 2 && $2 != "cn" ]]; then
+    echo -e "${RedBG}>>> arguments 2 only accept \"cn\"!${NC}"
     exit 1
 fi
+
 
 # 1. Start downloading
 echo -e "${GREEN}>>> downloading geoip.dat files...${NC}"
@@ -60,3 +60,4 @@ echo -e "${GREEN}Finished for geoip/geosite!${NC}"
 echo -e "${GREEN}>>> Restart xray servers..${NC}"
 systemctl restart xray
 echo -e "${GREEN}All Finished!!${NC}"
+
