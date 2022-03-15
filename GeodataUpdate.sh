@@ -2,7 +2,7 @@
 
 set -e
 
-# set xray's geofiles directory
+# set xray's geofiles directory through first argument
 xray_folder="$1"
 
 YELLOW='\033[33m'
@@ -17,7 +17,7 @@ GEOSITE_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/dow
 GEOIP="geoip.dat"
 GEOSITE="geosite.dat"
 
-# arguments 2 must be <empty> or "cn"
+# argument 2 must be <empty> or "cn"
 if [[ $# -gt 2 ]]; then
     echo -e "${RedBG}>>> only accept 2 argument!${NC}"
     exit 1
