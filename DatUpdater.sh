@@ -1,21 +1,17 @@
 #!/usr/bin/env bash
-set -e
-# set datfiles' directory
+
+# 0. set *.dat files' directory
 XrayDatDir=/usr/local/share/xray/
 V2rayAgentDatDir=/etc/v2ray-agent/xray/
 V2flyDatDir=/usr/local/share/v2ray/
 V2rayOldDir=/usr/lib/v2ray/
-if [[ -e $XrayDatDir ]];
-then
+if [[ -e $XrayDatDir ]]; then
 DatDir=$XrayDatDir
-elif [[ -e $V2rayAgentDatDir ]];
-then
+elif [[ -e $V2rayAgentDatDir ]]; then
 DatDir=$V2rayAgentDatDir
-elif [[ -e $V2flyDatDir ]];
-then
+elif [[ -e $V2flyDatDir ]];then
 DatDir=$V2flyDatDir
-elif [[ -e /usr/lib/v2ray/geosite.dat ]];
-then
+elif [[ -e /usr/lib/v2ray/geosite.dat ]]; then
 DatDir=$V2rayOldDir
 else
 echo '未匹配到默认dat文件路径，请手动输入：'
@@ -72,9 +68,9 @@ echo -e "${GREEN}Finished!!${NC}"
 
 echo -e "${GREEN}Finished for geoip/geosite!${NC}"
 
-# 4. Restart service
-echo -e "${GREEN}>>> Restart service..${NC}"
-if systemctl list-units --full -all | grep -Fq "$xray.service"
+# 4. Restart the right service
+echo -e "${GREEN}>>> Restart the service...${NC}"
+if systemctl list-unit-files --type service | grep -Fq "xray"
 then
 systemctl restart xray
 else
