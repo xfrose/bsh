@@ -72,8 +72,8 @@ echo -e "${GREEN}Finished!!${NC}"
 
 echo -e "${GREEN}Finished for geoip/geosite!${NC}"
 
-# 4. Restart server
-echo -e "${GREEN}>>> Restart server..${NC}"
+# 4. Restart service
+echo -e "${GREEN}>>> Restart service..${NC}"
 if systemctl list-units --full -all | grep -Fq "$xray.service"
 then
 systemctl restart xray
