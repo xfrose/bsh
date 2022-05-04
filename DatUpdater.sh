@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # 0. set *.dat files' directory
-DatDir=$(dir=$(find / -name "geosite.dat") && dirname $dir)
+DatDir=$(find / -name "geosite.dat" -exec dirname {} \;)
 
 YELLOW='\033[33m'
 GREEN='\033[0;32m'
