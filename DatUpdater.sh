@@ -48,11 +48,11 @@ fi
 
 
 # 1. Start downloading
-echo -e "${GREEN}>>> Downloading geoip.dat files to $DatDir...${NC}"
+echo -e "${GREEN}>>> Downloading geoip.dat to $DatDir...${NC}"
 echo -e "${YELLOW}geoip URL: $GEOIP_URL${NC}"
 curl -L $GEOIP_URL --output /tmp/$GEOIP
 
-echo -e "${GREEN}>>> Downloading geosite.dat files to $DatDir...${NC}"
+echo -e "${GREEN}>>> Downloading geosite.dat to $DatDir...${NC}"
 echo -e "${YELLOW}geosite URL: $GEOSITE_URL${NC}"
 curl -L $GEOSITE_URL --output /tmp/$GEOSITE
 
