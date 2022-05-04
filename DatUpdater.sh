@@ -46,7 +46,6 @@ elif [[ $# -eq 1 && $1 != "cn" ]]; then
     exit 1
 fi
 
-
 # 1. Start downloading
 echo -e "${GREEN}>>> Downloading geoip.dat to $DatDir...${NC}"
 echo -e "${YELLOW}geoip URL: $GEOIP_URL${NC}"
