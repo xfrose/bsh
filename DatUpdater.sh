@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 # 0. set *.dat files' directory
-XrayDatDir=/usr/local/share/xray/
-V2rayAgentDatDir=/etc/v2ray-agent/xray/
-V2flyDatDir=/usr/local/share/v2ray/
-V2rayOldDir=/usr/lib/v2ray/
+XrayDatDir="/usr/local/share/xray/"
+V2rayAgentDatDir="/etc/v2ray-agent/xray/"
+V2flyDatDir="/usr/local/share/v2ray/"
+V2rayOldDir="/usr/lib/v2ray/"
 if [[ -e $XrayDatDir ]]; then
 DatDir=$XrayDatDir
 elif [[ -e $V2rayAgentDatDir ]]; then
 DatDir=$V2rayAgentDatDir
 elif [[ -e $V2flyDatDir ]]; then
 DatDir=$V2flyDatDir
-elif [[ -e /usr/lib/v2ray/geosite.dat ]]; then
+elif [[ -e "/usr/lib/v2ray/geosite.dat" ]]; then
 DatDir=$V2rayOldDir
 else
 echo -e "${RedBG}>>> 未匹配到设置的默认dat文件路径，请手动输入：${NC}"
