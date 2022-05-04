@@ -1,28 +1,7 @@
 #!/usr/bin/env bash
 
 # 0. set *.dat files' directory
-XrayDatDir="/usr/local/share/xray/"
-V2rayAgentDatDir1="/etc/v2ray-agent/xray/"
-V2rayAgentDatDir2="/etc/v2ray-agent/v2ray/"
-V2flyDatDir="/usr/local/share/v2ray/"
-XuiDir="/usr/local/x-ui/bin/"
-V2rayOldDir="/usr/lib/v2ray/"
-if [[ -e $XrayDatDir ]]; then
-DatDir=$XrayDatDir
-elif [[ -e $V2rayAgentDatDir1 ]]; then
-DatDir=$V2rayAgentDatDir1
-elif [[ -e $V2rayAgentDatDir2 ]]; then
-DatDir=$V2rayAgentDatDir2
-elif [[ -e $V2flyDatDir ]]; then
-DatDir=$V2flyDatDir
-elif [[ -e "$XuiDir" ]]; then
-DatDir=$XuiDir
-elif [[ -e "/usr/lib/v2ray/geosite.dat" ]]; then
-DatDir=$V2rayOldDir
-else
-echo -e "${RedBG}>>> 未匹配到设置的默认dat文件路径，请手动输入：${NC}"
-read DatDir
-fi
+DatDir=$(dir=$(find / -name "geosite.dat") && dirname $dir)
 
 YELLOW='\033[33m'
 GREEN='\033[0;32m'
