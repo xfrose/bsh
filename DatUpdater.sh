@@ -14,9 +14,10 @@ DatDir=$V2flyDatDir
 elif [[ -e /usr/lib/v2ray/geosite.dat ]]; then
 DatDir=$V2rayOldDir
 else
-echo '未匹配到默认dat文件路径，请手动输入：'
+echo -e "${RedBG}>>> 未匹配到设置的默认dat文件路径，请手动输入：${NC}"
 read DatDir
 fi
+
 YELLOW='\033[33m'
 GREEN='\033[0;32m'
 RedBG='\033[41;37m'
@@ -29,7 +30,7 @@ GEOSITE_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/dow
 GEOIP="geoip.dat"
 GEOSITE="geosite.dat"
 
-# argument q must be <empty> or "cn"
+# argument 1 must be <empty> or "cn"
 if [[ $# -gt 1 ]]; then
     echo -e "${RedBG}>>> only accept 1 argument!${NC}"
     exit 1
@@ -56,24 +57,22 @@ echo -e "${YELLOW}geosite URL: $GEOSITE_URL${NC}"
 curl -L $GEOSITE_URL --output /tmp/$GEOSITE
 
 # 2. Clean old assets
-echo -e "${GREEN}>>> delete old dat files...${NC}"
+echo -e "${GREEN}>>> delete old geoip/geosit files...${NC}"
 rm -f $DatDir/$GEOIP $DatDir/$GEOSITE
 
 # 3. Replace old assets
-echo -e "${GREEN}>>> Replacing new geoip/geosite...${NC}"
+echo -e "${GREEN}>>> Replacing with new geoip/geosite files...${NC}"
 mv /tmp/$GEOIP $DatDir/
 mv /tmp/$GEOSITE $DatDir/
 
-echo -e "${GREEN}Finished!!${NC}"
-
-echo -e "${GREEN}Finished for geoip/geosite!${NC}"
+echo -e "${GREEN}Done${NC}"
 
 # 4. Restart the right service
-echo -e "${GREEN}>>> Restart the service...${NC}"
+echo -e "${GREEN}>>> Restarting the service...${NC}"
 if systemctl list-unit-files --type service | grep -Fq "xray"
 then
 systemctl restart xray
 else
 systemctl restart v2ray
 fi
-echo -e "${GREEN}All Finished!!${NC}"
+echo -e "${GREEN}All Done!!${NC}"
