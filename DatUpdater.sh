@@ -48,16 +48,16 @@ fi
 
 
 # 1. Start downloading
-echo -e "${GREEN}>>> downloading geoip.dat files to $DatDir...${NC}"
+echo -e "${GREEN}>>> Downloading geoip.dat files to $DatDir...${NC}"
 echo -e "${YELLOW}geoip URL: $GEOIP_URL${NC}"
 curl -L $GEOIP_URL --output /tmp/$GEOIP
 
-echo -e "${GREEN}>>> downloading geosite.dat files to $DatDir...${NC}"
+echo -e "${GREEN}>>> Downloading geosite.dat files to $DatDir...${NC}"
 echo -e "${YELLOW}geosite URL: $GEOSITE_URL${NC}"
 curl -L $GEOSITE_URL --output /tmp/$GEOSITE
 
 # 2. Clean old assets
-echo -e "${GREEN}>>> delete old geoip/geosit files...${NC}"
+echo -e "${GREEN}>>> Deleting old geoip/geosite files...${NC}"
 rm -f $DatDir/$GEOIP $DatDir/$GEOSITE
 
 # 3. Replace old assets
