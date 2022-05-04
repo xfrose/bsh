@@ -80,4 +80,3 @@ systemctl restart xray
 else
 systemctl restart v2ray
 echo -e "${GREEN}All Finished!!${NC}"
-
