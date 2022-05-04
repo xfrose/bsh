@@ -9,7 +9,7 @@ if [[ -e $XrayDatDir ]]; then
 DatDir=$XrayDatDir
 elif [[ -e $V2rayAgentDatDir ]]; then
 DatDir=$V2rayAgentDatDir
-elif [[ -e $V2flyDatDir ]];then
+elif [[ -e $V2flyDatDir ]]; then
 DatDir=$V2flyDatDir
 elif [[ -e /usr/lib/v2ray/geosite.dat ]]; then
 DatDir=$V2rayOldDir
