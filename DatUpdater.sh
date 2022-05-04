@@ -79,4 +79,5 @@ then
 systemctl restart xray
 else
 systemctl restart v2ray
+fi
 echo -e "${GREEN}All Finished!!${NC}"
