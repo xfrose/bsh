@@ -4,6 +4,7 @@
 XrayDatDir="/usr/local/share/xray/"
 V2rayAgentDatDir="/etc/v2ray-agent/xray/"
 V2flyDatDir="/usr/local/share/v2ray/"
+XuiDir="/usr/local/x-ui/bin/"
 V2rayOldDir="/usr/lib/v2ray/"
 if [[ -e $XrayDatDir ]]; then
 DatDir=$XrayDatDir
@@ -11,6 +12,8 @@ elif [[ -e $V2rayAgentDatDir ]]; then
 DatDir=$V2rayAgentDatDir
 elif [[ -e $V2flyDatDir ]]; then
 DatDir=$V2flyDatDir
+elif [[ -e "$XuiDir" ]]; then
+DatDir=$XuiDir
 elif [[ -e "/usr/lib/v2ray/geosite.dat" ]]; then
 DatDir=$V2rayOldDir
 else
