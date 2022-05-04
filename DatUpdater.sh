@@ -73,7 +73,8 @@ echo -e "${GREEN}Finished!!${NC}"
 echo -e "${GREEN}Finished for geoip/geosite!${NC}"
 
 # 4. Restart server
-echo -e "${GREEN}>>> Restart xray servers..${NC}"
+echo -e "${GREEN}>>> Restart servers..${NC}"
 systemctl restart xray
+systemctl restart v2ray
 echo -e "${GREEN}All Finished!!${NC}"
 
