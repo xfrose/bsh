@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-# 0. set *.dat files' directory
-DatDir=$(find / -name "geosite.dat" -exec dirname {} \;)
-
 YELLOW='\033[33m'
 GREEN='\033[0;32m'
 RedBG='\033[41;37m'
 GreenBG='\033[42;37m'
 NC='\033[0m'
+
+# 0. set *.dat files' directory
+DatDir=$(find / -name "geosite.dat" -exec dirname {} \;)
+echo -e "${YELLOW}File Path: $DatDir${NC}"
 
 GEOIP_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
 GEOSITE_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
@@ -32,11 +33,11 @@ elif [[ $# -eq 1 && $1 != "cn" ]]; then
 fi
 
 # 1. Start downloading
-echo -e "${GREEN}>>> Downloading geoip.dat to $DatDir...${NC}"
+echo -e "${GREEN}>>> Downloading geoip.dat...${NC}"
 echo -e "${YELLOW}geoip URL: $GEOIP_URL${NC}"
 curl -L $GEOIP_URL --output /tmp/$GEOIP
 
-echo -e "${GREEN}>>> Downloading geosite.dat to $DatDir...${NC}"
+echo -e "${GREEN}>>> Downloading geosite.dat...${NC}"
 echo -e "${YELLOW}geosite URL: $GEOSITE_URL${NC}"
 curl -L $GEOSITE_URL --output /tmp/$GEOSITE
 
