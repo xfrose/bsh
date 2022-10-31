@@ -61,3 +61,4 @@ else
 systemctl restart v2ray
 fi
 echo -e "${GREEN}All Done!!${NC}"
+echo -e "${YELLOW}See those files in$DatDir${NC}"
